@@ -32,7 +32,7 @@ public class FBGdriver {
             // Display new character to the player
             Character newPlayer = playerCharacters.get(i-1);
 
-            System.out.println("Player " + i + " is a " + newPlayer.getType() + " named " + newPlayer.getName());
+            System.out.println("Player " + i + " is a " + newPlayer.getType() + " named " + newPlayer.getName() + "\n\n");
         }
 
 
@@ -54,7 +54,10 @@ public class FBGdriver {
                 System.out.println("\n\nPlayer 1, you're up!\n");
                 // Show player stats
                 player1.printStats();
+                // Prompt player to use abilities if available
+                player1.promptAbilities(player2);
 
+                // Roll against opponent
                 player1.rollAgainst(player2);
 
                 // Player 2 goes
@@ -62,6 +65,10 @@ public class FBGdriver {
                 // Show player stats
                 player2.printStats();
 
+                //Prompt player to use abilities if available
+                player2.promptAbilities(player2);
+
+                // Roll against opponent
                 player2.rollAgainst(player1);
 
             }
@@ -152,4 +159,6 @@ public class FBGdriver {
         }
 
     }
+
+
 }

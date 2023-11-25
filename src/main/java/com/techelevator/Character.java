@@ -2,6 +2,7 @@ package com.techelevator;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class Character {
     private String type;
@@ -92,6 +93,54 @@ public abstract class Character {
         currentRoll = 0;
         System.out.println(getName() + "'s health: " + getHealth());
         System.out.println(otherPlayer.getName() + "'s health: " + otherPlayer.getHealth());
+    }
+
+    public void promptAbilities(Character otherPlayer) {
+        Scanner scanner = new Scanner(System.in);
+        if (hasFullHeal || hasPartialHeal || hasPowerAttack || hasSpecialPower){
+            System.out.println("You have special abilities left! These actions are added to your current turn. Meaning you will roll after performing an ability.");
+
+            if (hasFullHeal) {
+                    System.out.println("To use FULL HEAL, type FH");
+            } else {
+                    // Nothing prints to the console
+            }
+            if (hasPartialHeal) {
+                    System.out.println("To use PARTIAL HEAL, type PH");
+            } else {
+                    // Nothing prints to the console
+            }
+            if (hasPowerAttack) {
+                    System.out.println("To use POWER ATTACK, type PA");
+            } else {
+                    // Nothing prints to the console
+            }
+            if (hasSpecialPower) {
+                    System.out.println("To use SPECIAL POWER, type SP");
+            } else {
+                    // Nothing prints to the console
+            }
+            System.out.println("To not use any abilities this turn, type N");
+
+            System.out.print("What would " + getName() + " like to do?: ");
+            String userInput = scanner.nextLine().toUpperCase();
+
+            if (userInput.equals("FH") && hasFullHeal == true) {
+                fullHeal();
+            } else if (userInput.equals("PH") && hasPartialHeal == true) {
+                partialHeal();
+            } else if (userInput.equals("PA") && hasPowerAttack) {
+                powerAttack();
+            } else if (userInput.equals("SP") && hasSpecialPower == true) {
+                specialPower(otherPlayer);
+            } else {
+                System.out.println(getName() + " decided not to use special abilities.");
+            }
+
+        } else {
+            System.out.println("You have used all your special abilities...");
+        }
+
     }
 
 
