@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -33,8 +34,8 @@ public abstract class Character {
         } else {
             System.out.println(name + " has already used their special power...");
         }
-        System.out.println(getName() + "'s health: " + getHealth());
-        System.out.println(otherPlayer.getName() + "'s health: " + otherPlayer.getHealth());
+        System.out.println(getName() + "'S health: " + getHealth());
+        System.out.println(otherPlayer.getName() + "'S health: " + otherPlayer.getHealth());
     }
 
     public abstract void performSpecialPower(Character otherPlayer);
@@ -48,7 +49,7 @@ public abstract class Character {
         } else {
             System.out.println(name + " has already used their full heal.");
         }
-        System.out.println(getName() + "'s health: " + getHealth());
+        System.out.println(getName() + "'S health: " + getHealth());
     }
 
     public void powerAttack() {
@@ -73,57 +74,47 @@ public abstract class Character {
         } else {
             System.out.println(name + " already used their partial health.");
         }
-        System.out.println(getName() + "'s health: " + getHealth());
+        System.out.println(getName() + "'S health: " + getHealth());
     }
 
     public void rollAgainst(Character otherPlayer) {
-        Random random = new Random();
-        int rollNumber = random.nextInt(7);
-        if (currentRoll == 0) {
-            currentRoll += rollNumber;
-            System.out.println("You rolled a " + rollNumber);
-            otherPlayer.setHealth(otherPlayer.getHealth() - currentRoll);
-            System.out.println("Oof!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n" + getName() + ", are you ready to roll? Type Y: ");
+        String userInput = scanner.nextLine().toUpperCase();
+        System.out.println("\n");
+
+        if (userInput.equals("Y")) {
+            int rollNumber = (int)(Math.floor(Math.random() * 6 + 1));
+            if (currentRoll == 0) {
+                currentRoll += rollNumber;
+                System.out.println("You rolled a " + rollNumber);
+                otherPlayer.setHealth(otherPlayer.getHealth() - currentRoll);
+                System.out.println("Oof! " + getName() + " attacks " + otherPlayer.getName());
+            } else {
+                currentRoll += rollNumber;
+                System.out.println("You rolled a " + rollNumber + ". After adding your power attack, your current roll is " + currentRoll + ".");
+                otherPlayer.setHealth(otherPlayer.getHealth() - currentRoll);
+                System.out.println("Ouch! " + getName() + " attacks " + otherPlayer.getName());
+            }
+            currentRoll = 0;
+            System.out.println("\n\n\n");
+            System.out.println(getName() + "'S health: " + getHealth());
+            System.out.println(otherPlayer.getName() + "'S health: " + otherPlayer.getHealth());
         } else {
-            currentRoll += rollNumber;
-            System.out.println("You rolled a " + rollNumber + " and after roll additions/subtractions your current roll is " + currentRoll);
-            otherPlayer.setHealth(otherPlayer.getHealth() - currentRoll);
-            System.out.println("Ouch!");
+            System.out.println("Player ended game.");
         }
-        currentRoll = 0;
-        System.out.println(getName() + "'s health: " + getHealth());
-        System.out.println(otherPlayer.getName() + "'s health: " + otherPlayer.getHealth());
+
     }
 
     public void promptAbilities(Character otherPlayer) {
         Scanner scanner = new Scanner(System.in);
         if (hasFullHeal || hasPartialHeal || hasPowerAttack || hasSpecialPower){
-            System.out.println("You have special abilities left! These actions are added to your current turn. Meaning you will roll after performing an ability.");
 
-            if (hasFullHeal) {
-                    System.out.println("To use FULL HEAL, type FH");
-            } else {
-                    // Nothing prints to the console
-            }
-            if (hasPartialHeal) {
-                    System.out.println("To use PARTIAL HEAL, type PH");
-            } else {
-                    // Nothing prints to the console
-            }
-            if (hasPowerAttack) {
-                    System.out.println("To use POWER ATTACK, type PA");
-            } else {
-                    // Nothing prints to the console
-            }
-            if (hasSpecialPower) {
-                    System.out.println("To use SPECIAL POWER, type SP");
-            } else {
-                    // Nothing prints to the console
-            }
             System.out.println("To not use any abilities this turn, type N");
 
             System.out.print("What would " + getName() + " like to do?: ");
             String userInput = scanner.nextLine().toUpperCase();
+            System.out.println("\n");
 
             if (userInput.equals("FH") && hasFullHeal == true) {
                 fullHeal();
@@ -133,8 +124,10 @@ public abstract class Character {
                 powerAttack();
             } else if (userInput.equals("SP") && hasSpecialPower == true) {
                 specialPower(otherPlayer);
-            } else {
+            } else if (userInput.equals("N")){
                 System.out.println(getName() + " decided not to use special abilities.");
+            } else {
+                System.out.println("Invalid input");
             }
 
         } else {
@@ -202,29 +195,31 @@ public abstract class Character {
 
 
     public void printStats() {
-        System.out.println(getName() + "'s health is at " + getHealth() + ".");
+        System.out.println(getName() + "'S health = " + getHealth() + ".");
+        System.out.println("\nAvailable abilities: ");
+        System.out.println("*These are added to current turn. You roll after performing an ability*");
         if (hasFullHeal == true) {
-            System.out.println("You have 1 FULL HEAL left!");
+            System.out.println("FULL HEAL - type FH");
         } else {
             // Nothing prints to console
         }
         if (hasPartialHeal == true) {
-            System.out.println("You have 1 PARTIAL HEAL left! Use it to increase health by 10");
+            System.out.println("PARTIAL HEAL (+10 health) - type PH");
         } else {
             // Nothing prints to console
         }
         if (hasPowerAttack == true) {
-            System.out.println("You have 1 POWER ATTACK left! Use it to add 5 to your roll.");
+            System.out.println("POWER ATTACK (+5 roll) - type PA");
         } else {
             // Nothing prints to the console
         }
         if (hasSpecialPower == true) {
-            System.out.println("You can still use character type's unique SPECIAL POWER! Use this once per game.");
+            System.out.println("SPECIAL POWER - type SP ");
         } else {
             // Nothing prints to the console
         }
         if (hasFullHeal == false && hasPartialHeal == false && hasPowerAttack == false && hasSpecialPower == false) {
-            System.out.println("You have used all of your abilities.");
+            System.out.println("NONE");
         } else {
             // Nothing prints to the console
         }

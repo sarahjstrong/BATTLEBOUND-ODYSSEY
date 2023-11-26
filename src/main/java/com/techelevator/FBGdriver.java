@@ -10,8 +10,9 @@ public class FBGdriver {
     public static void main(String[] args) {
         // Welcome to the game, add new scanner, and create a list of characters to store each player
         System.out.println("\n\n");
-        System.out.println("***** WELCOME TO BATTLEBOUND ODYSSEY *****");
-        System.out.println("\n\n");
+        System.out.println("******* WELCOME TO BATTLEBOUND ODYSSEY *******\n");
+        System.out.println("***   Keep CAPS LOCK ON during the game   ***");
+        System.out.println("\n\n\n");
         Scanner scanner = new Scanner(System.in);
         // Create new character list to store players
         List<Character> playerCharacters = new ArrayList<>();
@@ -24,6 +25,8 @@ public class FBGdriver {
             System.out.println("DRAGONBORN | DWARF | ELF | GNOME | HALFELF | HALFLING | HALFORC | TIEFLING | HUMAN");
             System.out.print("\nPlayer " + i + ", please pick a character type from the list above (TYPE IN UPPERCASE): ");
             String type = scanner.nextLine().toUpperCase();
+
+
             System.out.println("\nChoose a name for your character (this can be anything): ");
             String name = scanner.nextLine().toUpperCase();
 
@@ -51,26 +54,53 @@ public class FBGdriver {
             // Repeat turns until one character is defeated (health reaches 0)
             while (player1.getHealth() > 0 && player2.getHealth() > 0) {
                 // Player 1 goes
-                System.out.println("\n\nPlayer 1, you're up!\n");
-                // Show player stats
-                player1.printStats();
-                // Prompt player to use abilities if available
-                player1.promptAbilities(player2);
+                System.out.print("\n\nPlayer 1, you're up! To continue, type Y: ");
+                String userInput = scanner.nextLine().toUpperCase();
+                System.out.println("\n");
 
-                // Roll against opponent
-                player1.rollAgainst(player2);
+                if (userInput.equals("Y")){
+                    // Show player stats
+                    player1.printStats();
+                    // Prompt player to use abilities if available
+                    player1.promptAbilities(player2);
+                    // Roll against opponent
+                    player1.rollAgainst(player2);
+                } else {
+                    System.out.println("Player ended game.");
+                }
 
-                // Player 2 goes
-                System.out.println("\n\nPlayer 2, you're up!\n");
-                // Show player stats
-                player2.printStats();
 
-                //Prompt player to use abilities if available
-                player2.promptAbilities(player2);
+                // Player 2 goes if health is still greater than 0
+                if (player2.getHealth() > 0) {
+                    System.out.print("\n\nPlayer 2, you're up! To continue, type Y: ");
+                    userInput = scanner.nextLine().toUpperCase();
+                    System.out.println("\n");
 
-                // Roll against opponent
-                player2.rollAgainst(player1);
+                    if (userInput.equals("Y")){
+                        // Show player stats
+                        player2.printStats();
+                        // Prompt player to use abilities if available
+                        player2.promptAbilities(player1);
+                        // Roll against opponent
+                        player2.rollAgainst(player1);
+                    } else {
+                        System.out.println("\nPlayer ended game.");
+                    }
+                } else {
+                    System.out.println("\n\n");
+                    System.out.println(player2.getName() + " was defeated by " + player1.getName() + "! PLAYER 1 WINS!!!");
+                }
 
+
+
+            }
+
+            if (player1.getHealth() <= 0) {
+                System.out.println("\n\n");
+                System.out.println(player1.getName() + " was defeated by " + player2.getName() + "! PLAYER 2 WINS!!!");
+            } else {
+                System.out.println("\n\n");
+                System.out.println(player2.getName() + " was defeated by " + player1.getName() + "! PLAYER 1 WINS!!!");
             }
 
 
