@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Elf extends Character {
 
-    public Elf(String type, String name) {
-        super(type, name);
+    public Elf(String name) {
+        super("ELF", name);
     }
 
     @Override

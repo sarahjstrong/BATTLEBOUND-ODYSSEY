@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Halforc extends Character {
 
-    public Halforc(String type, String name) {
-        super(type, name);
+    public Halforc(String name) {
+        super("HALFORC", name);
     }
 
     @Override

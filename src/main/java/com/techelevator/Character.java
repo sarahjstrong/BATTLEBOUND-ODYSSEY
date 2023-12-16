@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Character {
+    static Scanner scanner = new Scanner(System.in);
     private String type;
     private String name;
     private int health = 50;
@@ -78,12 +79,13 @@ public abstract class Character {
     }
 
     public void rollAgainst(Character otherPlayer) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\n" + getName() + ", are you ready to roll? Type Y: ");
-        String userInput = scanner.nextLine().toUpperCase();
-        System.out.println("\n");
+        String userInput = "N";
+        while (!userInput.equals("Y")) {
+            System.out.print("\n" + getName() + ", are you ready to roll? Type Y: ");
+            userInput = scanner.nextLine().toUpperCase();
+            System.out.println("\n");
+        }
 
-        if (userInput.equals("Y")) {
             int rollNumber = (int)(Math.floor(Math.random() * 6 + 1));
             if (currentRoll == 0) {
                 currentRoll += rollNumber;
@@ -98,23 +100,31 @@ public abstract class Character {
             }
             currentRoll = 0;
             System.out.println("\n\n\n");
+
+            // If either characters health is a negative number, it will reset to 0.
+            if (health < 0) {
+                health = 0;
+            }
             System.out.println(getName() + "'S health: " + getHealth());
+
+            if (otherPlayer.getHealth() < 0) {
+                otherPlayer.setHealth(0);
+            }
             System.out.println(otherPlayer.getName() + "'S health: " + otherPlayer.getHealth());
-        } else {
-            System.out.println("Player ended game.");
-        }
 
     }
 
     public void promptAbilities(Character otherPlayer) {
-        Scanner scanner = new Scanner(System.in);
         if (hasFullHeal || hasPartialHeal || hasPowerAttack || hasSpecialPower){
+            String userInput = "";
 
-            System.out.println("To not use any abilities this turn, type N");
+            while (!userInput.equals("FH") && !userInput.equals("PH") && !userInput.equals("PA") && !userInput.equals("SP") && !userInput.equals("N")) {
+                System.out.println("To not use any abilities this turn, type N");
 
-            System.out.print("What would " + getName() + " like to do?: ");
-            String userInput = scanner.nextLine().toUpperCase();
-            System.out.println("\n");
+                System.out.print("What would " + getName() + " like to do?: ");
+                userInput = scanner.nextLine().toUpperCase();
+                System.out.println("\n");
+            }
 
             if (userInput.equals("FH") && hasFullHeal == true) {
                 fullHeal();
@@ -129,6 +139,7 @@ public abstract class Character {
             } else {
                 System.out.println("Invalid input");
             }
+
 
         } else {
             System.out.println("You have used all your special abilities...");

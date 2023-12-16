@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Halfling extends Character {
 
-    public Halfling(String type, String name) {
-        super(type, name);
+    public Halfling(String name) {
+        super("HALFLING", name);
     }
 
     @Override

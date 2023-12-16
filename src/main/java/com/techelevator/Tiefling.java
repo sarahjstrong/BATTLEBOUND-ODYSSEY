@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Tiefling extends Character {
 
-    public Tiefling(String type, String name) {
-        super(type, name);
+    public Tiefling(String name) {
+        super("TIEFLING", name);
     }
 
     @Override

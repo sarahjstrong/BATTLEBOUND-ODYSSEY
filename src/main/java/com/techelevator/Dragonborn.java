@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Dragonborn extends Character {
 
-    public Dragonborn(String type, String name) {
-        super(type, name);
+    public Dragonborn(String name) {
+        super("DRAGONBORN", name);
     }
 
     @Override

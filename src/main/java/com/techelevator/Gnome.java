@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Gnome extends Character {
 
-    public Gnome(String type, String name) {
-        super(type, name);
+    public Gnome(String name) {
+        super("GNOME", name);
     }
 
     @Override

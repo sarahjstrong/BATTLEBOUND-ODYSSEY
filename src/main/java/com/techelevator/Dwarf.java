@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Dwarf extends  Character {
 
-    public Dwarf(String type, String name) {
-        super(type, name);
+    public Dwarf(String name) {
+        super("DWARF", name);
     }
 
     @Override

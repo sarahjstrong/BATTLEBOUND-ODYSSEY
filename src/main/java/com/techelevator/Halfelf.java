@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Halfelf extends Character {
 
-    public Halfelf(String type, String name) {
-        super(type, name);
+    public Halfelf(String name) {
+        super("HALFELF", name);
     }
 
     @Override

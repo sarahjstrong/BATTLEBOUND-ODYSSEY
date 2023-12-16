@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Human extends Character {
 
-    public Human(String type, String name) {
-        super(type, name);
+    public Human(String name) {
+        super("HUMAN", name);
     }
 
     @Override
