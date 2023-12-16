@@ -1,4 +1,30 @@
 ## **WELCOME TO BATTLEBOUND ODYSSEY!**
+
+
+Welcome to BattleBound Odyssey, an exciting Java-based project that explores the realm of object-oriented programming 
+and the command-line interface. This project showcases the implementation of a turn-based game where multiple users can 
+engage in battles, each controlling a unique character with special powers.
+
+### Overview
+
+BattleBound Odyssey is a command-line game written in Java that leverages the principles of object-oriented programming to 
+create a clear and modular structure. The project emphasizes the use of a character superclass, defining nine distinct character 
+types, each with a special power implemented through an overridden method. The game's core logic is encapsulated in the battle class,
+managing players and executing game actions during each turn.
+
+### Features
+* Object-Oriented Design: Explore the world of object-oriented programming with a well-organized structure.
+
+* Character Superclass: Utilize a character superclass to define nine unique character types, each with a special power implemented 
+through method overrides.
+
+* Command-Line Interface: Interact with the game through the command line, providing a straightforward user experience.
+
+* Loosely Coupled Code: Split entities into different classes with testable methods, ensuring a loosely coupled codebase 
+for easy maintenance and extensibility.
+
+
+
 **Instructions:** The Fantasy Battle Game requires 2 players. Player 1 will use
 the command-line interface to choose a character and enter their details. Next, player two
 will do the same. To choose a character type, make sure you enter a number based on 
