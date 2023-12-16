@@ -1,7 +1,21 @@
-## **WELCOME TO THE FANTASY BATTLE GAME!**
+## **WELCOME TO BATTLEBOUND ODYSSEY!**
 **Instructions:** The Fantasy Battle Game requires 2 players. Player 1 will use
-the command-line to choose a character and enter their details. Next, player two
-will do the same. Then the game begins...
+the command-line interface to choose a character and enter their details. Next, player two
+will do the same. To choose a character type, make sure you enter a number based on 
+the list presented. For your character name, this can be anything. Get creative!
+
+It is recommended that you keep your caps lock on during gameplay. To move forward during
+ your turn, you will be asked to enter a character like "Y" to continue and "PA" (power attack)
+ and other characters to perform your abilities. Before each turn, you will be presented 
+with your list of abilities that remain. You can select from that list or enter "N" to
+ continue to your roll. If you use a special ability, you will ALSO get to roll afterward. The
+ game keeps track of rounds, so you will know which round you are currently on. Each round consists
+of player one's turn followed by player two's. These rounds continue until a player's health reaches zero.
+ The game will display the winning character at the end!
+
+Enjoy the game and most importantly, GOOD LUCK!
+
+Read below about the different character types.
 
 **Character Type Backgrounds:** Each character types serves to add a little creativity
 to the game. It doesn't impact the character stats much put it does give you ONE power 
@@ -11,7 +25,8 @@ character has the ability to perform all the following abilities ONLY ONCE:
 * **Full Heal:** Returns character health to 50 (perfect health)
 * **Partial Heal:** Adds 10 to character health
 * **Power Attack:** Adds 10 to attack
-* **Special Attack:** This is specific to character type, but can only be used once.
+* **Special Attack:** This is specific to character type, but can only be used once. Try playing
+multiple rounds with each character to discover their unique powers!
 
 **Elf:** Elves are a magical people of otherworldly grace, living in the world but not 
 entirely part of it. They live in places of ethereal beauty, in the midst of ancient 
@@ -77,4 +92,7 @@ are not their fault but the result of an ancient sin, for which they and their c
 their children’s children will always be held accountable.
 
 Character race descriptions are provided by dndbeyond.com
+
+
+
     
