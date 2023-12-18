@@ -118,7 +118,9 @@ public abstract class Character {
         if (hasFullHeal || hasPartialHeal || hasPowerAttack || hasSpecialPower){
             String userInput = "";
 
-            while (!userInput.equals("FH") && !userInput.equals("PH") && !userInput.equals("PA") && !userInput.equals("SP") && !userInput.equals("N")) {
+            while (!userInput.equals("FH") && !userInput.equals("PH") && !userInput.equals("PA") && !userInput.equals("SP") && !userInput.equals("N")
+                    || (userInput.equals("FH") && hasFullHeal == false) || (userInput.equals("PH") && hasPartialHeal == false) || (userInput.equals("PA") && hasPowerAttack == false)
+            || (userInput.equals("SP") && hasSpecialPower == false)) {
                 System.out.println("To not use any abilities this turn, type N");
 
                 System.out.print("What would " + getName() + " like to do?: ");
@@ -137,7 +139,7 @@ public abstract class Character {
             } else if (userInput.equals("N")){
                 System.out.println(getName() + " decided not to use special abilities.");
             } else {
-                System.out.println("Invalid input");
+                System.out.println(getName() + " used all their special abilities");
             }
 
 

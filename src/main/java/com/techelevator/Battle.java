@@ -152,7 +152,7 @@ public class Battle {
     public void player1Turn() {
         String userInput = "N";
         while (!userInput.equals("Y")) {
-            System.out.print("\n\nPlayer 1, you're up! To continue, type Y: ");
+            System.out.print("\n\n" + player1.getName() + ", you're up! To continue, type Y: ");
             userInput = scanner.nextLine().toUpperCase();
             System.out.println("\n");
         }
@@ -168,7 +168,7 @@ public class Battle {
     public void player2Turn() {
         String userInput = "N";
         while (!userInput.equals("Y")) {
-            System.out.print("\n\nPlayer 2, you're up! To continue, type Y: ");
+            System.out.print("\n\n" + player2.getName() + ", you're up! To continue, type Y: ");
             userInput = scanner.nextLine().toUpperCase();
             System.out.println("\n");
         }
