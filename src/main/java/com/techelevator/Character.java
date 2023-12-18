@@ -39,44 +39,15 @@ public abstract class Character {
         System.out.println(otherPlayer.getName() + "'S health: " + otherPlayer.getHealth());
     }
 
+    // The following abstract methods differ between each character subclass
     public abstract void performSpecialPower(Character otherPlayer);
-    // This varies for each character subclass
 
-    public void fullHeal() {
-        if (hasFullHeal == true) {
-            health = 50;
-            System.out.println(name + " has used their full heal!");
-            hasFullHeal = false;
-        } else {
-            System.out.println(name + " has already used their full heal.");
-        }
-        System.out.println(getName() + "'S health: " + getHealth());
-    }
+    public abstract void powerAttack();
 
-    public void powerAttack() {
-        if (hasPowerAttack == true) {
-            currentRoll += 5;
-            System.out.println(name + " used power attack! 5 will be added to next roll.");
-            hasPowerAttack = false;
-        } else {
-            System.out.println(name + " already used their power attack.");
-        }
-    }
+    public abstract void partialHeal();
 
-    public void partialHeal() {
-        if (hasPartialHeal == true) {
-            if (health <= 40) {
-                health += 10;
-            } else {
-                health = 50;
-            }
-            hasPartialHeal = false;
-            System.out.println(name + " used their partial heal!");
-        } else {
-            System.out.println(name + " already used their partial health.");
-        }
-        System.out.println(getName() + "'S health: " + getHealth());
-    }
+    public abstract void fullHeal();
+
 
     public void rollAgainst(Character otherPlayer) {
         String userInput = "N";
@@ -182,12 +153,24 @@ public abstract class Character {
         return hasFullHeal;
     }
 
+    public void setHasFullHeal(boolean hasFullHeal) {
+        this.hasFullHeal = hasFullHeal;
+    }
+
     public boolean isHasPowerAttack() {
         return hasPowerAttack;
     }
 
+    public void setHasPowerAttack(boolean hasPowerAttack) {
+        this.hasPowerAttack = hasPowerAttack;
+    }
+
     public boolean isHasPartialHeal() {
         return hasPartialHeal;
+    }
+
+    public void setHasPartialHeal(boolean hasPartialHeal) {
+        this.hasPartialHeal = hasPartialHeal;
     }
 
     public boolean isHasSpecialPower() {
@@ -212,17 +195,35 @@ public abstract class Character {
         System.out.println("\nAvailable abilities: ");
         System.out.println("*These are added to current turn. You roll after performing an ability*");
         if (hasFullHeal == true) {
-            System.out.println("FULL HEAL - type FH");
+            if (type.equals("HUMAN")) {
+                System.out.println("FULL HEAL (45) - type FH");
+            } else if (type.equals("DRAGONBORN") || type.equals("HALFORC") || type.equals("TIEFLING")) {
+                System.out.println("FULL HEAL (60) - type FH");
+            } else {
+                System.out.println("FULL HEAL (50) - type FH");
+            }
         } else {
             // Nothing prints to console
         }
         if (hasPartialHeal == true) {
-            System.out.println("PARTIAL HEAL (+10 health) - type PH");
+            if (type.equals("HUMAN")) {
+                System.out.println("PARTIAL HEAL (+12 health) - type PH");
+            } else if (type.equals("HALFLING") || type.equals("ELF") || type.equals("HALFELF")) {
+                System.out.println("PARTIAL HEAL (+15 health) - type PH");
+            } else {
+                System.out.println("PARTIAL HEAL (+10 health) - type PH");
+            }
         } else {
             // Nothing prints to console
         }
         if (hasPowerAttack == true) {
-            System.out.println("POWER ATTACK (+5 roll) - type PA");
+            if (type.equals("HUMAN")) {
+                System.out.println("POWER ATTACK (+8 roll) - type PA");
+            } else if (type.equals("DWARF") || type.equals("GNOME")) {
+                System.out.println("POWER ATTACK (+10 roll) - type PA");
+            } else {
+                System.out.println("POWER ATTACK (+5 roll) - type PA");
+            }
         } else {
             // Nothing prints to the console
         }
