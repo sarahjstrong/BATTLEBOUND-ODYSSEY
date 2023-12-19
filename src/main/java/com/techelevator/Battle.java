@@ -150,34 +150,42 @@ public class Battle {
     }
 
     public void player1Turn() {
-        String userInput = "N";
-        while (!userInput.equals("Y")) {
-            System.out.print("\n\n" + player1.getName() + ", you're up! To continue, type Y: ");
-            userInput = scanner.nextLine().toUpperCase();
-            System.out.println("\n");
+        if (player1.willSkipNextTurn()) {
+            System.out.println("You miss this turn!");
+        } else {
+            String userInput = "N";
+            while (!userInput.equals("Y")) {
+                System.out.print("\n\n" + player1.getName() + ", you're up! To continue, type Y: ");
+                userInput = scanner.nextLine().toUpperCase();
+                System.out.println("\n");
+            }
+            // Show player stats
+            player1.printStats();
+            // Prompt player to use abilities if available
+            player1.promptAbilities(player2);
+            // Roll against opponent
+            player1.rollAgainst(player2);
         }
-        // Show player stats
-        player1.printStats();
-        // Prompt player to use abilities if available
-        player1.promptAbilities(player2);
-        // Roll against opponent
-        player1.rollAgainst(player2);
 
     }
 
     public void player2Turn() {
-        String userInput = "N";
-        while (!userInput.equals("Y")) {
-            System.out.print("\n\n" + player2.getName() + ", you're up! To continue, type Y: ");
-            userInput = scanner.nextLine().toUpperCase();
-            System.out.println("\n");
+        if (player2.willSkipNextTurn()) {
+            System.out.println("You miss this turn!");
+        } else {
+            String userInput = "N";
+            while (!userInput.equals("Y")) {
+                System.out.print("\n\n" + player2.getName() + ", you're up! To continue, type Y: ");
+                userInput = scanner.nextLine().toUpperCase();
+                System.out.println("\n");
+            }
+            // Show player stats
+            player2.printStats();
+            // Prompt player to use abilities if available
+            player2.promptAbilities(player1);
+            // Roll against opponent
+            player2.rollAgainst(player1);
         }
-        // Show player stats
-        player2.printStats();
-        // Prompt player to use abilities if available
-        player2.promptAbilities(player1);
-        // Roll against opponent
-        player2.rollAgainst(player1);
 
     }
     }

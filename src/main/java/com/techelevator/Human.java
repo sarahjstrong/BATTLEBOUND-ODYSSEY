@@ -1,10 +1,10 @@
 package com.techelevator;
 
 public class Human extends Character {
-    private int health = 45;
 
     public Human(String name) {
         super("HUMAN", name);
+        setHealth(45);
     }
 
     @Override
@@ -51,16 +51,30 @@ public class Human extends Character {
         System.out.println("Polyglotism is the ability to use many languages for communication.");
         System.out.println("This catches the opponent by surprise. " + getName() + " and " + otherPlayer.getName() + " have banter back and forth, giving them both time to heal.");
         System.out.println(getName() + "'s health increases by 12.");
-        if (getHealth() <= 40) {
-            setHealth(getHealth() + 10);
+        if (getHealth() <= 38) {
+            setHealth(getHealth() + 12);
         } else {
-            setHealth(50);
+            setHealth(40);
         }
         System.out.println(otherPlayer.getName() + "'s health increases by 2.");
-        if (otherPlayer.getHealth() <= 48) {
-            otherPlayer.setHealth(otherPlayer.getHealth() + 2);
+        if (otherPlayer.getType().equals("HUMAN")) {
+            if (otherPlayer.getHealth() <= 43) {
+                otherPlayer.setHealth(otherPlayer.getHealth() + 2);
+            } else {
+                otherPlayer.setHealth(45);
+            }
+        } else if (otherPlayer.getType().equals("DRAGONBORN") || otherPlayer.getType().equals("HALFORC") || otherPlayer.getType().equals("TIEFLING")) {
+            if (otherPlayer.getHealth() <= 58) {
+                otherPlayer.setHealth(otherPlayer.getHealth() + 2);
+            } else {
+                otherPlayer.setHealth(60);
+            }
         } else {
-            otherPlayer.setHealth(50);
+            if (otherPlayer.getHealth() <= 48) {
+                otherPlayer.setHealth(otherPlayer.getHealth() + 2);
+            } else {
+                otherPlayer.setHealth(50);
+            }
         }
 
     }
