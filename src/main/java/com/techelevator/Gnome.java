@@ -10,7 +10,7 @@ public class Gnome extends Character {
     public void powerAttack() {
         if (isHasPowerAttack() == true) {
             setCurrentRoll(10);
-            System.out.println(getName() + " used power attack! 5 will be added to next roll.");
+            System.out.println(getName() + " used power attack! 10 will be added to next roll.");
             setHasPowerAttack(false);
         } else {
             System.out.println(getName() + " already used their power attack.");
