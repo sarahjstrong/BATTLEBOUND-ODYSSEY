@@ -11,7 +11,7 @@ public class Human extends Character {
     public void powerAttack() {
         if (isHasPowerAttack() == true) {
             setCurrentRoll(8);
-            System.out.println(getName() + " used power attack! 5 will be added to next roll.");
+            System.out.println(getName() + " used power attack! 8 will be added to next roll.");
             setHasPowerAttack(false);
         } else {
             System.out.println(getName() + " already used their power attack.");
@@ -32,10 +32,10 @@ public class Human extends Character {
     @Override
     public void partialHeal() {
         if (isHasPartialHeal() == true) {
-            if (getHealth() <= 38) {
+            if (getHealth() <= 33) {
                 setHealth(getHealth() + 12);
             } else {
-                setHealth(50);
+                setHealth(45);
             }
             setHasPartialHeal(false);
             System.out.println(getName() + " used their partial heal!");
@@ -54,7 +54,7 @@ public class Human extends Character {
         if (getHealth() <= 38) {
             setHealth(getHealth() + 12);
         } else {
-            setHealth(40);
+            setHealth(45);
         }
         System.out.println(otherPlayer.getName() + "'s health increases by 2.");
         if (otherPlayer.getType().equals("HUMAN")) {

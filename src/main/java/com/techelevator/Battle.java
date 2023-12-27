@@ -126,19 +126,18 @@ public class Battle {
 
     public Character timeToBattle() {
         // Round counter that keeps track of which round it is and displays to players. Increments 1 after each loop completes
-        int roundCounter = 1;
+        int roundCounter = 0;
 
         // Continues to loop through as long as both players have health over 0
         while (player1.getHealth() > 0 && player2.getHealth() > 0) {
+            roundCounter += 1;
             System.out.println("\n\nROUND " + roundCounter + "!");
             // Player 1's turn
             player1Turn();
 
             // Player 2's turn as long as they have health over 0
-            if (player2.getHealth() > 0) {
+            if (player2.getHealth() > 0 && player1.getHealth() > 0) {
             player2Turn();
-                roundCounter += 1;
-
             }
         }
         // Return the winner to main method
@@ -151,7 +150,7 @@ public class Battle {
 
     public void player1Turn() {
         if (player1.willSkipNextTurn()) {
-            System.out.println("You're under a spell! You skip this turn...");
+            System.out.println(player1.getName() + " is under a spell. Skipping turn...");
             player1.setSkipNextTurn(false);
         } else {
             String userInput = "N";
@@ -165,14 +164,16 @@ public class Battle {
             // Prompt player to use abilities if available
             player1.promptAbilities(player2);
             // Roll against opponent
-            player1.rollAgainst(player2);
+            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
+                player1.rollAgainst(player2);
+            }
         }
 
     }
 
     public void player2Turn() {
         if (player2.willSkipNextTurn()) {
-            System.out.println("You're under a spell! You skip this turn...");
+            System.out.println(player2.getName() + " is under a spell. Skipping turn...");
             player1.setSkipNextTurn(false);
         } else {
             String userInput = "N";
@@ -186,7 +187,9 @@ public class Battle {
             // Prompt player to use abilities if available
             player2.promptAbilities(player1);
             // Roll against opponent
-            player2.rollAgainst(player1);
+            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
+                player2.rollAgainst(player1);
+            }
         }
 
     }

@@ -32,10 +32,10 @@ public class Halforc extends Character {
     @Override
     public void partialHeal() {
         if (isHasPartialHeal() == true) {
-            if (getHealth() <= 40) {
+            if (getHealth() <= 50) {
                 setHealth(getHealth() + 10);
             } else {
-                setHealth(50);
+                setHealth(60);
             }
             setHasPartialHeal(false);
             System.out.println(getName() + " used their partial heal!");
