@@ -151,7 +151,8 @@ public class Battle {
 
     public void player1Turn() {
         if (player1.willSkipNextTurn()) {
-            System.out.println("You miss this turn!");
+            System.out.println("You're under a spell! You skip this turn...");
+            player1.setSkipNextTurn(false);
         } else {
             String userInput = "N";
             while (!userInput.equals("Y")) {
@@ -171,7 +172,8 @@ public class Battle {
 
     public void player2Turn() {
         if (player2.willSkipNextTurn()) {
-            System.out.println("You miss this turn!");
+            System.out.println("You're under a spell! You skip this turn...");
+            player1.setSkipNextTurn(false);
         } else {
             String userInput = "N";
             while (!userInput.equals("Y")) {

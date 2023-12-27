@@ -47,14 +47,14 @@ public class Tiefling extends Character {
     @Override
     public void performSpecialPower(Character otherPlayer) {
         System.out.println("Since " + getName() + " is a " + getType() + ", their special power is MISDIRECTION!");
-        System.out.println("A spell is used against the opponent! They are tricked into missing their next turn...");
+        System.out.println("A spell is used against the opponent! They will miss their next turn...");
         otherPlayer.setSkipNextTurn(true);
         System.out.println(otherPlayer.getName() + " will forget to attack on next turn.");
         System.out.println("Without an attack from the opponent next turn, " + getName() + " is able to heal. Health increases by 4.");
-        if (getHealth() <= 46) {
+        if (getHealth() <= 56) {
             setHealth(getHealth() + 4);
         } else {
-            setHealth(50);
+            setHealth(60);
         }
     }
 }

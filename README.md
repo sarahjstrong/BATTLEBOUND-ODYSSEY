@@ -3,7 +3,7 @@
 
 Welcome to BattleBound Odyssey, an exciting Java-based project that explores the realm of object-oriented programming 
 and the command-line interface. This project showcases the implementation of a turn-based game where multiple users can 
-engage in battles, each controlling a unique character with special powers.
+engage in battles, each controlling a unique character with special powers and varying abilities.
 
 ### Overview
 
@@ -16,12 +16,12 @@ managing players and executing game actions during each turn.
 * Object-Oriented Design: Explore the world of object-oriented programming with a well-organized structure.
 
 * Character Superclass: Utilize a character superclass to define nine unique character types, each with a special power implemented 
-through method overrides.
+through method overrides, varying starting health, and a range of character abilities.
 
 * Command-Line Interface: Interact with the game through the command line, providing a straightforward user experience.
 
-* Loosely Coupled Code: Split entities into different classes with testable methods, ensuring a loosely coupled codebase 
-for easy maintenance and extensibility.
+* Loosely Coupled Code: Split entities into different classes with methods that are independent of one another
+with the goal of practicing loosely coupled code.
 
 
 
@@ -43,24 +43,24 @@ Enjoy the game and most importantly, GOOD LUCK!
 
 Read below about the different character types.
 
-**Character Type Backgrounds:** Each character types serves to add a little creativity
-to the game. It doesn't impact the character stats much put it does give you ONE power 
-specific to that character type that allows you to inflict more damage on the opponent
-defend themself, or even manipulate your character into skipping a turn! By default, each
+**Character Type Backgrounds:** Each character type serves to add a little creativity
+to the game. Each character model is similar but have varying full health, differing strength of abilities,
+and a UNIQUE special power. This special power is unique to that character type and allows you to inflict
+more damage on the opponent, defend yourself, or even manipulate opponent into skipping a turn! By default, each
 character has the ability to perform all the following abilities ONLY ONCE:
-* **Full Heal:** Returns character health to 50 (perfect health)
-* **Partial Heal:** Adds 10 to character health
-* **Power Attack:** Adds 10 to attack
+* **Full Heal:** Returns character health to perfect health (Full health points vary by character type)
+* **Partial Heal:** Increases health by a certain number (specific to character type)
+* **Power Attack:** Adds anywhere from 8 to 15 points to next attack
 * **Special Attack:** This is specific to character type, but can only be used once. Try playing
 multiple rounds with each character to discover their unique powers!
 
-**Elf:** Elves are a magical people of otherworldly grace, living in the world but not 
+**Elf (full health 50 | larger partial heal):** Elves are a magical people of otherworldly grace, living in the world but not 
 entirely part of it. They live in places of ethereal beauty, in the midst of ancient 
 forests or in silvery spires glittering with faerie light, where soft music drifts 
 through the air and gentle fragrances waft on the breeze. Elves love nature and magic,
 art and artistry, music and poetry, and the good things of the world.
 
-**Dragonborn:** Born of dragons, as their name proclaims, the dragonborn walk proudly 
+**Dragonborn (full health 60):** Born of dragons, as their name proclaims, the dragonborn walk proudly 
 through a world that greets them with fearful incomprehension. Shaped by draconic gods
 or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique
 race, combining the best attributes of dragons and humanoids. Some dragonborn are faithful 
@@ -71,13 +71,13 @@ the echoing of picks and hammers in deep mines and blazing forges, a commitment 
 and tradition, and a burning hatred of goblins and orcs—these common threads unite all
 dwarves.
 
-**Gnome:** A constant hum of busy activity pervades the warrens and neighborhoods where
+**Gnome (full health 50 | stronger power attack):** A constant hum of busy activity pervades the warrens and neighborhoods where
 gnomes form their close-knit communities. Louder sounds punctuate the hum: a crunch 
 of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and 
 especially bursts of laughter. Gnomes take delight in life, enjoying every moment of 
 invention, exploration, investigation, creation, and play.
 
-**Half-Elf:** Walking in two worlds but truly belonging to neither, half-elves combine what
+**Half-Elf (full health 50 | larger partial heal):** Walking in two worlds but truly belonging to neither, half-elves combine what
 some say are the best qualities of their elf and human parents: human curiosity, invent
 iveness, and ambition tempered by the refined senses, love of nature, and artistic 
 tastes of the elves. Some half-elves live among humans, set apart by their emotional 
@@ -87,7 +87,7 @@ timeless elven realms, while their peers continue to live as children. Many half
 unable to fit into either society, choose lives of solitary wandering or join with 
 other misfits and outcasts in the adventuring life.
 
-**Halfling:** The comforts of home are the goals of most halflings’ lives: a place to 
+**Halfling (full health 50 | larger partial heal):** The comforts of home are the goals of most halflings’ lives: a place to 
 settle in peace and quiet, far from marauding monsters and clashing armies; a blazing
 fire and a generous meal; fine drink and fine conversation. Though some halflings live
 out their days in remote agricultural communities, others form nomadic bands that 
@@ -95,14 +95,14 @@ travel constantly, lured by the open road and the wide horizon to discover the w
 of new lands and peoples. But even these wanderers love peace, food, hearth, and home,
 though home might be a wagon jostling along a dirt road or a raft floating downriver.
 
-*Half-Orc:** Whether united under the leadership of a mighty warlock or having fought to 
+*Half-Orc (full health 60):** Whether united under the leadership of a mighty warlock or having fought to 
 a standstill after years of conflict, orc and human communities, sometimes form 
 alliances. When these alliances are sealed by marriages, half-orcs are born. Some
 half-orcs rise to become proud leaders of orc communities. Some venture into the world
 to prove their worth. Many of these become adventurers, achieving greatness for their
 mighty deeds.
 
-**Human:** In the reckonings of most worlds, humans are the youngest of the common races, 
+**Human (full health 45 | stronger abilities):** In the reckonings of most worlds, humans are the youngest of the common races, 
 late to arrive on the world scene and short-lived in comparison to dwarves, elves, and 
 dragons. Perhaps it is because of their shorter lives that they strive to achieve as
 much as they can in the years they are given. Or maybe they feel they have something to
@@ -110,7 +110,7 @@ prove to the elder races, and that’s why they build their mighty empires on th
 of conquest and trade. Whatever drives them, humans are the innovators, the achievers, 
 and the pioneers of the worlds.
 
-**Tiefling:** To be greeted with stares and whispers, to suffer violence and insult on the street,
+**Tiefling (full health 60):** To be greeted with stares and whispers, to suffer violence and insult on the street,
 to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife,
 tieflings know that this is because a pact struck generations ago infused the essence of 
 Asmodeus—overlord of the Nine Hells—into their bloodline. Their appearance and their nature
