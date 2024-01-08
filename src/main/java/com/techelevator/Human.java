@@ -49,7 +49,7 @@ public class Human extends Character {
     public void performSpecialPower(Character otherPlayer) {
         System.out.println("Since " + getName() + " is a " + getType() + ", their special power is POLYGLOTISM!");
         System.out.println("Polyglotism is the ability to use many languages for communication.");
-        System.out.println("This catches the opponent by surprise. " + getName() + " and " + otherPlayer.getName() + " have banter back and forth, giving them both time to heal.");
+        System.out.println("This catches the opponent by surprise. " + getName() + " and " + otherPlayer.getName() + " banter back and forth, giving them both time to heal.");
         System.out.println(getName() + "'s health increases by 12.");
         if (getHealth() <= 38) {
             setHealth(getHealth() + 12);

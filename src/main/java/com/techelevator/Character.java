@@ -57,7 +57,7 @@ public abstract class Character {
             System.out.println("\n");
         }
 
-            int rollNumber = (int)(Math.floor(Math.random() * 6 + 1));
+            int rollNumber = (int)(Math.floor(Math.random() * 15 + 1));
             if (currentRoll == 0) {
                 currentRoll += rollNumber;
                 System.out.println("You rolled a " + rollNumber);

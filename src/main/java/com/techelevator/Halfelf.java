@@ -51,6 +51,6 @@ public class Halfelf extends Character {
         otherPlayer.setHealth(otherPlayer.getHealth() - 11);
         System.out.println(otherPlayer.getName() + "'s health decreases by 11.");
         setHealth(getHealth() - 1);
-        System.out.println("Unfortunately, the running quickly takes a toll on " + getName() + "'s energy level. Health decreases by 1.");
+        System.out.println("Unfortunately, running quickly takes a toll on " + getName() + "'s energy level. Health decreases by 1.");
     }
 }

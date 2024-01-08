@@ -34,10 +34,10 @@ It is recommended that you keep your caps lock on during gameplay. To move forwa
  your turn, you will be asked to enter a character like "Y" to continue and "PA" (power attack)
  and other characters to perform your abilities. Before each turn, you will be presented 
 with your list of abilities that remain. You can select from that list or enter "N" to
- continue to your roll. If you use a special ability, you will ALSO get to roll afterward. The
- game keeps track of rounds, so you will know which round you are currently on. Each round consists
-of player one's turn followed by player two's. These rounds continue until a player's health reaches zero.
- The game will display the winning character at the end!
+ continue to your roll. If you use a special ability, you will ALSO get to roll afterward. When player rolls,
+they can get anything between 1 and 15. The game keeps track of rounds, so you will know which round you are 
+currently on. Each round consists of player one's turn followed by player two's. These rounds continue until a 
+player's health reaches zero. The game will display the winning character at the end!
 
 Enjoy the game and most importantly, GOOD LUCK!
 
