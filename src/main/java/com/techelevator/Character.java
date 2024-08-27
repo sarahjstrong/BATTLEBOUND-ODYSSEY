@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Character {
-    static Scanner scanner = new Scanner(System.in);
     private String type;
     private String name;
     private int health = 50;
@@ -16,6 +15,8 @@ public abstract class Character {
     private boolean hasPartialHeal = true;
     private boolean hasSpecialPower = true;
     private boolean skipNextTurn = false;
+
+    static Scanner scanner = new Scanner(System.in);
 
 
 
@@ -28,7 +29,7 @@ public abstract class Character {
 
     // Methods
     public void specialPower(Character otherPlayer) {
-        if (hasSpecialPower == true) {
+        if (hasSpecialPower) {
             System.out.println(name + " is using their special power!");
             performSpecialPower(otherPlayer);
             hasSpecialPower = false;
@@ -90,8 +91,8 @@ public abstract class Character {
             String userInput = "";
 
             while (!userInput.equals("FH") && !userInput.equals("PH") && !userInput.equals("PA") && !userInput.equals("SP") && !userInput.equals("N")
-                    || (userInput.equals("FH") && hasFullHeal == false) || (userInput.equals("PH") && hasPartialHeal == false) || (userInput.equals("PA") && hasPowerAttack == false)
-            || (userInput.equals("SP") && hasSpecialPower == false)) {
+                    || (userInput.equals("FH") && !hasFullHeal) || (userInput.equals("PH") && !hasPartialHeal) || (userInput.equals("PA") && !hasPowerAttack)
+            || (userInput.equals("SP") && !hasSpecialPower)) {
                 System.out.println("To not use any abilities this turn, type N");
 
                 System.out.print("What would " + getName() + " like to do?: ");
@@ -99,13 +100,13 @@ public abstract class Character {
                 System.out.println("\n");
             }
 
-            if (userInput.equals("FH") && hasFullHeal == true) {
+            if (userInput.equals("FH") && hasFullHeal) {
                 fullHeal();
-            } else if (userInput.equals("PH") && hasPartialHeal == true) {
+            } else if (userInput.equals("PH") && hasPartialHeal) {
                 partialHeal();
             } else if (userInput.equals("PA") && hasPowerAttack) {
                 powerAttack();
-            } else if (userInput.equals("SP") && hasSpecialPower == true) {
+            } else if (userInput.equals("SP") && hasSpecialPower) {
                 specialPower(otherPlayer);
             } else if (userInput.equals("N")){
                 System.out.println(getName() + " decided not to use special abilities.");
@@ -194,7 +195,7 @@ public abstract class Character {
         System.out.println(getName() + "'S health = " + getHealth() + ".");
         System.out.println("\nAvailable abilities: ");
         System.out.println("*These are added to current turn. You roll after performing an ability*");
-        if (hasFullHeal == true) {
+        if (hasFullHeal) {
             if (type.equals("HUMAN")) {
                 System.out.println("FULL HEAL (45) - type FH");
             } else if (type.equals("DRAGONBORN") || type.equals("HALFORC") || type.equals("TIEFLING")) {
@@ -202,10 +203,8 @@ public abstract class Character {
             } else {
                 System.out.println("FULL HEAL (50) - type FH");
             }
-        } else {
-            // Nothing prints to console
         }
-        if (hasPartialHeal == true) {
+        if (hasPartialHeal) {
             if (type.equals("HUMAN")) {
                 System.out.println("PARTIAL HEAL (+12 health) - type PH");
             } else if (type.equals("HALFLING") || type.equals("ELF") || type.equals("HALFELF")) {
@@ -213,10 +212,8 @@ public abstract class Character {
             } else {
                 System.out.println("PARTIAL HEAL (+10 health) - type PH");
             }
-        } else {
-            // Nothing prints to console
         }
-        if (hasPowerAttack == true) {
+        if (hasPowerAttack) {
             if (type.equals("HUMAN")) {
                 System.out.println("POWER ATTACK (+8 roll) - type PA");
             } else if (type.equals("DWARF") || type.equals("GNOME")) {
@@ -224,18 +221,12 @@ public abstract class Character {
             } else {
                 System.out.println("POWER ATTACK (+5 roll) - type PA");
             }
-        } else {
-            // Nothing prints to the console
         }
-        if (hasSpecialPower == true) {
+        if (hasSpecialPower) {
             System.out.println("SPECIAL POWER - type SP ");
-        } else {
-            // Nothing prints to the console
         }
-        if (hasFullHeal == false && hasPartialHeal == false && hasPowerAttack == false && hasSpecialPower == false) {
+        if (!hasFullHeal && !hasPartialHeal && !hasPowerAttack && !hasSpecialPower) {
             System.out.println("NONE");
-        } else {
-            // Nothing prints to the console
         }
 
     }

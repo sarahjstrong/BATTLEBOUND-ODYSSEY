@@ -1,12 +1,10 @@
 package com.techelevator;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FBGdriver {
+public class FBDriver {
     // Create new scanner for user input
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
@@ -48,7 +46,7 @@ public class FBGdriver {
         Character player1 = battle.getPlayer1();
         Character player2 = battle.getPlayer2();
 
-        if (battle.arePlayersReady() == true) {
+        if (battle.arePlayersReady()) {
             // Repeat turns until one character is defeated (health reaches 0)
             Character winner = battle.timeToBattle();
             System.out.println("\n\n" + winner.getName() + " WINS!\n\nGAME OVER!");
