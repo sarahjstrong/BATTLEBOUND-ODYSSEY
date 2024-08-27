@@ -12,9 +12,7 @@ public class Battle {
     public Battle() {
     }
 
-
     // Getters and setters
-
     public void setPlayers(List<Character> playerList) {
         player1 = playerList.get(0);
         player2 = playerList.get(1);
@@ -26,6 +24,15 @@ public class Battle {
 
     public Character getPlayer2() {
         return player2;
+    }
+
+
+    // Display welcome message
+    public void displayWelcomeMessage() {
+        System.out.println("\n\n");
+        System.out.println("******* WELCOME TO BATTLEBOUND ODYSSEY *******\n");
+        System.out.println("***   Keep CAPS LOCK ON during the game   ***");
+        System.out.println("\n\n\n");
     }
 
     // Prompts player to choose a character type and this method checks to make sure the input can be converted properly into an int. Returns the valid type back to main
@@ -86,13 +93,23 @@ public class Battle {
         return newPlayer;
     }
 
+    // Add player to list of players. The add character only loops through twice so this list will contain two Characters
+    public List<Character> addToPlayerList(List<Character> playerList, Character newCharacter) {
+        playerList.add(newCharacter);
+        return playerList;
+    }
 
-    // Display welcome message
-    public void displayWelcomeMessage() {
-        System.out.println("\n\n");
-        System.out.println("******* WELCOME TO BATTLEBOUND ODYSSEY *******\n");
-        System.out.println("***   Keep CAPS LOCK ON during the game   ***");
-        System.out.println("\n\n\n");
+    // Display start message which returns players input to begin the battle
+    public boolean arePlayersReady() {
+        // Prompt user to assure they are ready to start battle
+        String ready = "N";
+        while (!ready.equals("Y")) {
+            System.out.println("\n\n\n");
+            System.out.println("Are we ready for battle?");
+            System.out.print("Type Y to begin: ");
+            ready = scanner.nextLine().toUpperCase();
+        }
+        return true;
     }
 
     public Character timeToBattle() {
@@ -141,24 +158,4 @@ public class Battle {
             }
         }
     }
-
-    // Display start message which returns players input to begin the battle
-    public boolean arePlayersReady() {
-        // Prompt user to assure they are ready to start battle
-        String ready = "N";
-        while (!ready.equals("Y")) {
-            System.out.println("\n\n\n");
-            System.out.println("Are we ready for battle?");
-            System.out.print("Type Y to begin: ");
-            ready = scanner.nextLine().toUpperCase();
-        }
-        return true;
-    }
-
-    // Add player to list of players. The add character only loops through twice so this list will contain two Characters
-    public List<Character> addToPlayerList(List<Character> playerList, Character newCharacter) {
-        playerList.add(newCharacter);
-        return playerList;
-    }
-
 }
